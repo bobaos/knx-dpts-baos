@@ -5,7 +5,7 @@ Simple library to work with KNX datapoints in JS. Supports DPT1-18, as KNX BAOS 
 # Usage
 
 ```javascript
-const dpts = require('./knx-dpts-baos');
+const dpts = require('knx-dpts-baos');
 
 // assuming data is Buffer<0x00>/Buffer<0x01>
 dpts.dpt1.toJS(data);
