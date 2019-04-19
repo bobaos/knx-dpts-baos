@@ -1,4 +1,4 @@
-const helper = require('./helper');
+const helper = require("./helper");
 
 /**
  * decodes dpt6
@@ -12,8 +12,7 @@ const helper = require('./helper');
 function toJS(encoded) {
   helper.checkBuffer(encoded, 1);
 
-  const byte1 = encoded.readUInt8(0);
-  return byte1 - 128;
+  return encoded.readInt8(0);
 }
 
 /**
@@ -28,11 +27,14 @@ function fromJS(decoded) {
   var value = Number(decoded);
 
   if (value < -128 || value > 127) {
-    throw new RangeError('Value out of range (expected -128-127, got ' + value + ')');
+    throw new RangeError("Value out of range (expected -128-127, got " + value + ")");
   }
 
-  value += 128;
-  return Buffer.alloc(1, value);
+  var b = Buffer.alloc(1, 0);
+
+  b.writeInt8(value);
+
+  return b;
 }
 
 module.exports = {
