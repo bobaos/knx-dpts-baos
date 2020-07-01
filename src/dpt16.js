@@ -16,7 +16,7 @@ function toJS(encoded) {
 
   for (var i = 0; i < encoded.byteLength; i++) {
     const charCode = encoded.readUInt8(i);
-    str += String.fromCharCode(charCode & 0x7F);
+    str += String.fromCharCode(charCode);
   }
 
   // Remove trailing NULL characters
@@ -38,8 +38,8 @@ function fromJS(decoded) {
 
   for (var i = 0, j = Math.min(chars.length, 14); i < j; i++) {
     const charCode = chars.charCodeAt(i);
-    if (charCode > 127) {
-      throw new RangeError('Charcode out of range (expected 0-127, got ' + charCode + ')');
+    if (charCode > 255) {
+      throw new RangeError('Charcode out of range (expected 0-255, got ' + charCode + ')');
     }
     buffer.writeUInt8(charCode, i);
   }
