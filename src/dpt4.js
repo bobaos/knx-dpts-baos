@@ -15,7 +15,7 @@ function toJS(encoded) {
   helper.checkBuffer(encoded, 1);
 
   const byte1 = encoded.readUInt8(0);
-  return String.fromCharCode(byte1 & 0x7F);
+  return String.fromCharCode(byte1);
 }
 
 /**
@@ -30,10 +30,10 @@ function fromJS(decoded) {
   const chars = String(decoded);
   const charCode = chars.charCodeAt(0) || 0;
 
-  if (charCode > 127) {
-    throw new RangeError('Charcode out of range (expected 0-127, got ' + charCode + ')');
+  if (charCode > 255) {
+    throw new RangeError('Charcode out of range (expected 0-255, got ' + charCode + ')');
   }
-  return Buffer.alloc(1, charCode & 0x7F)
+  return Buffer.alloc(1, charCode)
 }
 
 
