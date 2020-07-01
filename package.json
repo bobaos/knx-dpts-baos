@@ -1,6 +1,6 @@
 {
   "name": "knx-dpts-baos",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple library to work with KNX datapoints in JS. Supports DPT1-18, as KNX BAOS 830 ETS database. Thanks to npm 'knx-datapoints' package and Rafelder as it is based on his library but much simplified.",
   "repository": {
     "type": "git",
